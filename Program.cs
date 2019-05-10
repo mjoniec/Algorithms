@@ -93,10 +93,88 @@ namespace MergeCommonElementsDistinct
     {
         static void Main(string[] args)
         {
-            Console.WriteLine(new MergeCommonElementsDistinct().RunMerge());
+            //ThreadInTryCatchTest.Test_1_Synchronous();
+            //ThreadInTryCatchTest.Test_2_Asynchronous();
+            //ThreadInTryCatchTest.Test_3_AsynchronousWithJoin();
+            //ThreadInTryCatchTest.Test_4_ThreadSleep();
+            //ThreadInTryCatchTest.Test_5_ThreadAbort();
+            ThreadInTryCatchTest.Test_6_BackgroundThread();
+
+            Console.WriteLine("test end");
         }
+        
+        //static void Main(string[] args)
+        //{
+        //    Console.WriteLine(new MergeCommonElementsDistinct().RunMerge());
+        //}
     }
 
+     /* Test 6 result - background thread quits when main one does
+Work Sleep 1
+test end
+         */
+
+
+
+        /* Test 5 result - one of the threads was aborted and its iteration nr 3 never occured
+Work Sleep 1
+Work Sleep 2
+Work Sleep 1
+test end  // abort was invoked by this moment
+Work Sleep 2
+Work Sleep 3
+         */
+
+
+
+        /* Test 4 result
+Work X 1
+Work Sleep 1
+Work X 2
+Work X 3
+test end
+Work Y 1
+Work Y 2
+Work Y 3
+Work Sleep 2
+Work Sleep 3
+         */
+
+
+
+        /* Test 3 result .Join()
+Work Sleep 1
+Work Sleep 2
+Work Sleep 3
+test end - main thread and all threads are made to wait until sleep thread finished
+Work X 1
+Work X 2
+Work X 3
+         */
+
+
+
+        /* Test 2 result
+Work X 1
+Work Y 1
+test end - main thread finished and remaining threads are still running - so they are not background threads
+Work X 2
+Work X 3
+Work Y 2
+Work Y 3
+         */
+
+
+        /* Test 1 result
+Work X 1
+Work X 2
+Work X 3
+Work Y 1
+Work Y 2
+Work Y 3
+test end
+         */
+    
     public class MergeCommonElementsDistinct
     {
         internal class Element
