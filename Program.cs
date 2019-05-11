@@ -6,7 +6,72 @@ using System.Threading;
 
 namespace MergeCommonElementsDistinct
 {
-    class ThreadInTryCatchTest
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //ThreadInTryCatchTest.Test_1_Synchronous();
+            //ThreadInTryCatchTest.Test_2_Asynchronous();
+            //ThreadInTryCatchTest.Test_3_AsynchronousWithJoin();
+            //ThreadInTryCatchTest.Test_4_ThreadSleep();
+            //ThreadInTryCatchTest.Test_5_ThreadAbort();
+            //ThreadTest.Test_6_BackgroundThread();
+
+            ThreadPoolTest.Test();
+
+            Console.WriteLine("test end");
+        }
+    }
+
+    class ThreadPoolTest
+    {
+        public static void Test()
+        {
+            var mywatch = new Stopwatch();
+
+            Console.WriteLine("Thread Pool Execution");
+
+            mywatch.Start();
+            ProcessWithThreadPoolMethod();
+            mywatch.Stop();
+
+            Console.WriteLine("Time consumed by ProcessWithThreadPoolMethod is : " + mywatch.ElapsedTicks.ToString());
+            mywatch.Reset();
+
+
+            Console.WriteLine("Thread Execution");
+
+            mywatch.Start();
+            ProcessWithThreadMethod();
+            mywatch.Stop();
+
+            Console.WriteLine("Time consumed by ProcessWithThreadMethod is : " + mywatch.ElapsedTicks.ToString());
+        }
+
+        static void ProcessWithThreadPoolMethod()
+        {
+            for (int i = 0; i <= 10; i++)
+            {
+                ThreadPool.QueueUserWorkItem(new WaitCallback(Process));
+            }
+        }
+
+        static void ProcessWithThreadMethod()
+        {
+            for (int i = 0; i <= 10; i++)
+            {
+                Thread obj = new Thread(Process);
+                obj.Start();
+            }
+        }
+
+        static void Process(object callback)
+        {
+
+        }
+    }
+
+    class ThreadTest
     {
         public static void Test_6_BackgroundThread()
         {
@@ -89,46 +154,34 @@ namespace MergeCommonElementsDistinct
             }
         }
     }
-    
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            //ThreadInTryCatchTest.Test_1_Synchronous();
-            //ThreadInTryCatchTest.Test_2_Asynchronous();
-            //ThreadInTryCatchTest.Test_3_AsynchronousWithJoin();
-            //ThreadInTryCatchTest.Test_4_ThreadSleep();
-            //ThreadInTryCatchTest.Test_5_ThreadAbort();
-            ThreadInTryCatchTest.Test_6_BackgroundThread();
 
-            Console.WriteLine("test end");
-        }
-        
-        //static void Main(string[] args)
-        //{
-        //    Console.WriteLine(new MergeCommonElementsDistinct().RunMerge());
-        //}
-    }
 
-     /* Test 6 result - background thread quits when main one does
+    /* Test Thread Pool vs Thread 
+Thread Pool Execution
+Time consumed by ProcessWithThreadPoolMethod is : 3248
+Thread Execution
+Time consumed by ProcessWithThreadMethod is : 6410
+test end
+    */
+
+
+    /* Test 6 result - background thread quits when main one does
 Work Sleep 1
 test end
-         */
+    */
 
 
-
-        /* Test 5 result - one of the threads was aborted and its iteration nr 3 never occured
+    /* Test 5 result - one of the threads was aborted and its iteration nr 3 never occured
 Work Sleep 1
 Work Sleep 2
 Work Sleep 1
 test end  // abort was invoked by this moment
 Work Sleep 2
 Work Sleep 3
-         */
+     */
 
 
-
-        /* Test 4 result
+    /* Test 4 result
 Work X 1
 Work Sleep 1
 Work X 2
@@ -139,11 +192,10 @@ Work Y 2
 Work Y 3
 Work Sleep 2
 Work Sleep 3
-         */
+     */
 
 
-
-        /* Test 3 result .Join()
+    /* Test 3 result .Join()
 Work Sleep 1
 Work Sleep 2
 Work Sleep 3
@@ -151,11 +203,10 @@ test end - main thread and all threads are made to wait until sleep thread finis
 Work X 1
 Work X 2
 Work X 3
-         */
+     */
 
 
-
-        /* Test 2 result
+    /* Test 2 result
 Work X 1
 Work Y 1
 test end - main thread finished and remaining threads are still running - so they are not background threads
@@ -163,10 +214,10 @@ Work X 2
 Work X 3
 Work Y 2
 Work Y 3
-         */
+     */
 
 
-        /* Test 1 result
+    /* Test 1 result
 Work X 1
 Work X 2
 Work X 3
@@ -174,7 +225,7 @@ Work Y 1
 Work Y 2
 Work Y 3
 test end
-         */
+     */
     
     public class MergeCommonElementsDistinct
     {
