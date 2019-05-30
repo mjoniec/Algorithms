@@ -22,7 +22,21 @@ namespace MergeCommonElementsDistinct
             Console.WriteLine("test end");
         }
     }
+/*
+pdf converter invoke
+     private static void Main(string[] args)
+        {
+            //Replace with dynamic env dir
+            //var pathToFolderWithDocuments = @"C:\Users\marcin_joniec\Desktop\Bookatable";
 
+            var pathToFolderWithDocuments = Environment.CurrentDirectory;
+            var docxToPdfConverter = new DocxToPdfConverter(pathToFolderWithDocuments);
+
+            var result = docxToPdfConverter.ConvertAllFiles();
+
+            Console.WriteLine(result);
+        }
+  */  
     class ThreadPoolTest
     {
         public static void Test()
