@@ -2,11 +2,17 @@
 
 namespace Launcher
 {
-    class Program
+    public class Program
     {
-        static void Main(string[] args)
+        private static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            var samplesRunner = new SamplesRunner();
+            var samples = samplesRunner.GetAllSamplesNames();
+            var sampleName = samples.First();
+
+            var result = samplesRunner.RunSample(sampleName);
+
+            Console.WriteLine(result);
         }
     }
 }
