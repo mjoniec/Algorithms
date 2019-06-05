@@ -6,3 +6,5 @@
 /.vs/CodeSamplesAndAlgorithms/v16
 /CodeSamples/obj
 /Algorithms/obj
+/LaunchableSample/obj
+/LaunchableSample/bin/Debug/netcoreapp2.2

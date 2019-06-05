@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Launcher
 {
@@ -6,11 +7,11 @@ namespace Launcher
     {
         private static void Main(string[] args)
         {
-            var samplesRunner = new SamplesRunner();
-            var samples = samplesRunner.GetAllSamplesNames();
+            var launcher = new Launcher();
+            var samples = launcher.GetAllSamplesNames();
             var sampleName = samples.First();
 
-            var result = samplesRunner.RunSample(sampleName);
+            var result = launcher.RunSample(sampleName);
 
             Console.WriteLine(result);
         }

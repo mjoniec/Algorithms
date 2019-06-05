@@ -1,15 +1,18 @@
-﻿using System.Collections.Generic;
+﻿using Algorithms;
+using CodeSamples;
+using LaunchableSample;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace Launcher
 {
     public class Launcher
     {
-        private readonly List<ICodeSample> _codeSamples;
+        private readonly List<ILaunchableSample> _codeSamples;
 
         public Launcher()
         {
-            _codeSamples = new List<ICodeSample>
+            _codeSamples = new List<ILaunchableSample>
             {
                 new MergeCommonElementsDistinct(),
                 new ThreadTest()
