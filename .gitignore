@@ -8,3 +8,8 @@
 /Algorithms/obj
 /LaunchableSample/obj
 /LaunchableSample/bin/Debug/netcoreapp2.2
+/Launcher/bin/Debug/netcoreapp2.2
+/CodeSamples/bin/Debug/netcoreapp2.2
+/Algorithms/bin/Debug/netcoreapp2.2
+/.vs/CodeSamplesAndAlgorithms/DesignTimeBuild
+/Reusables/obj/Debug
