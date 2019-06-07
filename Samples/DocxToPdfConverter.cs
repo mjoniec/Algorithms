@@ -64,12 +64,12 @@ namespace Samples
             return "xxx";
         }
 
-        private void ProcessFile(string fileEntry, Application application)
+        private void ProcessFile(string filePath, Application application)
         {
-            var wordDocument = application.Documents.Open(fileEntry);
+            var wordDocument = application.Documents.Open(filePath);
 
             //if a file has the same name it is overrided
-            wordDocument.ExportAsFixedFormat(Path.GetDirectoryName(fileEntry) + "\\" + Path.GetFileNameWithoutExtension(fileEntry) + ".pdf", WdExportFormat.wdExportFormatPDF);
+            wordDocument.ExportAsFixedFormat(FileProcessing.GetFileDirectoryAndNameWithoutExtension(filePath) + ".pdf", WdExportFormat.wdExportFormatPDF);
 
             //I was trying to close word processing so that service in windows dont get blocked
             //Type mismatch exception??? 
