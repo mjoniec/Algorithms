@@ -1,9 +1,9 @@
-﻿using LaunchableSample;
+﻿using Reusables;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Algorithms
+namespace Samples
 {
     public class MergeCommonElementsDistinct : ILaunchableSample
     {
