@@ -14,8 +14,9 @@ namespace Launcher
         {
             _codeSamples = new List<ILaunchableSample>
             {
-                new MergeCommonElementsDistinct(),
-                new ThreadTest()
+                //new ThreadTest(),
+                new DocxToPdfConverter(),
+                new MergeCommonElementsDistinct()
             };
         }
 
