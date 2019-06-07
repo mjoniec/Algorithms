@@ -55,6 +55,10 @@
       <Project>{ef2365b7-422e-4168-a666-e1059943b3b6}</Project>
       <Name>Reusables</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Samples\Samples.csproj">
+      <Project>{E4D2C001-BFCB-4ACE-9F10-B2FB32B64142}</Project>
+      <Name>Samples</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

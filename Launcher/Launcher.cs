@@ -1,4 +1,5 @@
 ﻿using Reusables;
+using Samples;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -12,8 +13,8 @@ namespace Launcher
         {
             _codeSamples = new List<ILaunchableSample>
             {
-                //new ThreadTest(),
                 new DocxToPdfConverter(),
+                new ThreadingTest(),
                 new MergeCommonElementsDistinct()
             };
         }
