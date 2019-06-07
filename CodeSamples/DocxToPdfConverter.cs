@@ -1,7 +1,6 @@
 using System;
 using System.IO;
 using System.Linq;
-using LaunchableSample;
 using Microsoft.Office.Interop.Word;
 
 namespace CodeSamples

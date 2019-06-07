@@ -13,3 +13,5 @@
 /Algorithms/bin/Debug/netcoreapp2.2
 /.vs/CodeSamplesAndAlgorithms/DesignTimeBuild
 /Reusables/obj/Debug
+/Samples/obj/Debug/Samples.csproj.CoreCompileInputs.cache
+/Samples/obj/Debug/DesignTimeResolveAssemblyReferencesInput.cache
