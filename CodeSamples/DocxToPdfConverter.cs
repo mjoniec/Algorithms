@@ -1,28 +1,30 @@
-﻿using System.IO;
+using System;
+using System.IO;
 using System.Linq;
+using LaunchableSample;
+using Microsoft.Office.Interop.Word;
 
 namespace CodeSamples
 {
-    public class DocxToPdfConverter
+    public class DocxToPdfConverter : ILaunchableSample
     {
-        /*
-pdf converter invoke
-     private static void Main(string[] args)
-        {
-            //Replace with dynamic env dir
-            //var pathToFolderWithDocuments = @"C:\Users\marcin_joniec\Desktop\Bookatable";
-
-            var pathToFolderWithDocuments = Environment.CurrentDirectory;
-            var docxToPdfConverter = new DocxToPdfConverter(pathToFolderWithDocuments);
-
-            var result = docxToPdfConverter.ConvertAllFiles();
-
-            Console.WriteLine(result);
-        }
-  */
-
         private const string DocxExtension = ".docx";
         private readonly string _pathToFolderWithDocuments;
+
+        public string Run()
+        {
+            return ConvertAllFiles();
+        }
+
+        public string GetName()
+        {
+            return "DocxToPdfConverter";
+        }
+
+        public DocxToPdfConverter()
+        {
+            _pathToFolderWithDocuments = Environment.CurrentDirectory;
+        }
 
         /// <summary>
         /// When path non existing throws exception
@@ -43,8 +45,8 @@ pdf converter invoke
         {
             var fileEntries = Directory.GetFiles(_pathToFolderWithDocuments);
 
-            if (fileEntries.All(fileName =>
-                !string.Equals(DocxExtension, Path.GetExtension(fileName))))
+            if (fileEntries.All(fileEntry =>
+                !string.Equals(DocxExtension, Path.GetExtension(fileEntry))))
             {
                 //exceptions are costly
                 //throw new FileNotFoundException("No .docx documents available at: " + _pathToFolderWithDocuments);
@@ -52,12 +54,27 @@ pdf converter invoke
                 return "No .docx documents available at: " + _pathToFolderWithDocuments;
             }
 
-            //foreach (var fileName in fileEntries)
-            //{
-            //    ProcessFile(fileName);
-            //}
+            var application = new Application();
+
+            foreach (var fileEntry in fileEntries.Where(s => string.Equals(DocxExtension, Path.GetExtension(s))))
+            {
+                ProcessFile(fileEntry, application);
+            }
 
             return "xxx";
+        }
+
+        private void ProcessFile(string fileEntry, Application application)
+        {
+            var wordDocument = application.Documents.Open(fileEntry);
+
+            //if a file has the same name it is overrided
+            wordDocument.ExportAsFixedFormat(Path.GetDirectoryName(fileEntry) + "\\" + Path.GetFileNameWithoutExtension(fileEntry) + ".pdf", WdExportFormat.wdExportFormatPDF);
+
+            //I was trying to close word processing so that service in windows dont get blocked
+            //Type mismatch exception??? 
+            //Now I must close word process in task manager each time the app is run
+            //application.Documents.Close(fileEntry);
         }
     }
 }
