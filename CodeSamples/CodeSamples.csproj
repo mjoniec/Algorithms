@@ -7,9 +7,5 @@
   <ItemGroup>
     <PackageReference Include="Microsoft.Office.Interop.Word" Version="12.0.4518.1014" />
   </ItemGroup>
-  
-  <ItemGroup>
-    <ProjectReference Include="..\LaunchableSample\LaunchableSample.csproj" />
-  </ItemGroup>
 
 </Project>
