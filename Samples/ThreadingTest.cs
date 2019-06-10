@@ -19,7 +19,7 @@ namespace Samples
 
             Console.WriteLine("Thread test end");
 
-            return "Thread test end";
+            return string.Empty;
         }
 
         public string GetName()
