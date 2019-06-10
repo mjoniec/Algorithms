@@ -41,9 +41,12 @@ namespace Launcher
 
                 Console.WriteLine("Running sample: " + sampleNameToRun);
                 Console.WriteLine("Press any key to clear and return.");
+                Console.WriteLine("================================================");
+                Console.WriteLine("");
 
-                RunSample(sampleNameToRun);
+                var sampleResult = RunSample(sampleNameToRun);
 
+                Console.WriteLine(sampleResult);
                 Console.ReadKey();
             }
 
