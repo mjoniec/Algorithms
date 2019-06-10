@@ -1,4 +1,4 @@
-﻿using Reusables;
+using Reusables;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -10,6 +10,7 @@ namespace Samples
         private readonly IList<Element> _listA;
         private readonly IList<Element> _listB;
         private readonly IList<Element> _listC;
+        private List<int> _mergedList = new List<int>();
         private IEnumerable<IList<Element>> JoinedLists => new List<IList<Element>> { _listA, _listB, _listC };
 
         public MergeCommonElementsDistinct()
@@ -21,7 +22,7 @@ namespace Samples
 
         public string Run()
         {
-            var mergedList = new List<int>();
+            _mergedList = new List<int>();
 
             foreach (var list in JoinedLists)
             {
@@ -29,12 +30,12 @@ namespace Samples
                 {
                     if (IsValuePresentInAllLists(element.Value, JoinedLists))
                     {
-                        mergedList.Add(element.Value);
+                        _mergedList.Add(element.Value);
                     }
                 }
             }
 
-            return PrintOutput(mergedList);
+            return GetOutput();
         }
 
         public string GetName()
@@ -42,7 +43,21 @@ namespace Samples
             return "MergeCommonElementsDistinct";
         }
 
-        private static string PrintOutput(IEnumerable<int> list)
+        private string GetOutput()
+        {
+            var sb = new StringBuilder(string.Empty);
+
+            sb.AppendLine("Input:");
+            sb.AppendLine(GetOutput(_listA.Select(l => l.Value)));
+            sb.AppendLine(GetOutput(_listB.Select(l => l.Value)));
+            sb.AppendLine(GetOutput(_listC.Select(l => l.Value)));
+            sb.AppendLine("Output:");
+            sb.AppendLine(GetOutput(_mergedList));
+
+            return sb.ToString();
+        }
+
+        private static string GetOutput(IEnumerable<int> list)
         {
             var sb = new StringBuilder(string.Empty);
 
