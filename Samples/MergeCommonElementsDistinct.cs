@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Samples
 {
-    public class MergeCommonElementsDistinct : ILaunchableSample
+    public class MergeCommonElementsDistinct : ILaunchable
     {
         private readonly IList<Element> _listA;
         private readonly IList<Element> _listB;

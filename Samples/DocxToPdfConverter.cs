@@ -6,7 +6,7 @@ using Reusables;
 
 namespace Samples
 {
-    public class DocxToPdfConverter : ILaunchableSample
+    public class DocxToPdfConverter : ILaunchable
     {
         private const string DocxExtension = ".docx";
         private readonly string _pathToFolderWithDocuments;
@@ -75,6 +75,16 @@ namespace Samples
             //Type mismatch exception??? 
             //Now I must close word process in task manager each time the app is run
             //application.Documents.Close(fileEntry);
+        }
+    }
+
+    public static class FileProcessing
+    {
+        public static string GetFileDirectoryAndNameWithoutExtension(string filePath)
+        {
+            return Path.GetDirectoryName(filePath) +
+                "\\" +
+                Path.GetFileNameWithoutExtension(filePath);
         }
     }
 }

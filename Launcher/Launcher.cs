@@ -8,11 +8,11 @@ namespace Launcher
 {
     public class Launcher
     {
-        private readonly List<ILaunchableSample> _codeSamples;
+        private readonly List<ILaunchable> _codeSamples;
 
         public Launcher()
         {
-            _codeSamples = new List<ILaunchableSample>
+            _codeSamples = new List<ILaunchable>
             {
                 new ThreadingTest(),
                 new MergeCommonElementsDistinct()

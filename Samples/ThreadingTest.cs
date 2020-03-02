@@ -5,7 +5,7 @@ using System.Threading;
 
 namespace Samples
 {
-    public class ThreadingTest : ILaunchableSample
+    public class ThreadingTest : ILaunchable
     {
         public string Run()
         {

@@ -1,6 +1,6 @@
 ﻿namespace Reusables
 {
-    public interface ILaunchableSample
+    public interface ILaunchable
     {
         string Run();
         string GetName();
