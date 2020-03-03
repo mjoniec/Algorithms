@@ -7,7 +7,7 @@ namespace Samples
 {
     public class MergeCommonElementsDistinct : ILaunchable
     {
-        private readonly IList<Element> _listA;//test
+        private readonly IList<Element> _listA;
         private readonly IList<Element> _listB;
         private readonly IList<Element> _listC;
         private List<int> _mergedList = new List<int>();
