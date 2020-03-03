@@ -21,3 +21,8 @@
 /Reusables/bin/Debug
 /Samples/bin/Debug
 /Samples/obj/Debug
+/.vs/CodeSamplesAndAlgorithms/v15/Server/sqlite3/storage.ide-wal
+/.vs/CodeSamplesAndAlgorithms/v15/Server/sqlite3/storage.ide-shm
+/.vs/CodeSamplesAndAlgorithms/v15/Server/sqlite3/storage.ide
+/.vs/CodeSamplesAndAlgorithms/v15/Server/sqlite3/db.lock
+/.vs/CodeSamplesAndAlgorithms/v15/.suo
