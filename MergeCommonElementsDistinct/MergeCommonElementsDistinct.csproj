@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A42335A5-14EE-44B0-B808-947548990BBA}</ProjectGuid>
+    <ProjectGuid>{EA918BE9-1234-496F-87FB-E6E266150CD5}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Launcher</RootNamespace>
-    <AssemblyName>Launcher</AssemblyName>
+    <RootNamespace>MergeCommonElementsDistinct</RootNamespace>
+    <AssemblyName>MergeCommonElementsDistinct</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -43,22 +43,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Launcher.cs" />
+    <Compile Include="MergeCommonElementsDistinct.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Reusables\Reusables.csproj">
-      <Project>{ef2365b7-422e-4168-a666-e1059943b3b6}</Project>
-      <Name>Reusables</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Samples\Samples.csproj">
-      <Project>{E4D2C001-BFCB-4ACE-9F10-B2FB32B64142}</Project>
-      <Name>Samples</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

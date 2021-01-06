@@ -1,11 +1,10 @@
-using Reusables;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Samples
+namespace MergeCommonElementsDistinct
 {
-    public class MergeCommonElementsDistinct : ILaunchable
+    public class MergeCommonElementsDistinct
     {
         private readonly IList<Element> _listA;
         private readonly IList<Element> _listB;

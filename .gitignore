@@ -26,3 +26,5 @@
 /.vs/CodeSamplesAndAlgorithms/v15/Server/sqlite3/storage.ide
 /.vs/CodeSamplesAndAlgorithms/v15/Server/sqlite3/db.lock
 /.vs/CodeSamplesAndAlgorithms/v15/.suo
+/MergeCommonElementsDistinct/bin/Debug
+/MergeCommonElementsDistinct/obj/Debug
