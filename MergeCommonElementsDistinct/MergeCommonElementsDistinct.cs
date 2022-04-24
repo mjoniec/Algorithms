@@ -4,7 +4,7 @@ using System.Text;
 
 namespace MergeCommonElementsDistinct
 {
-    public class MergeCommonElementsDistinct
+    public class MergeCommonElementsDistinct : ICodeDemo
     {
         private readonly IList<Element> _listA;
         private readonly IList<Element> _listB;

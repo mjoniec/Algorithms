@@ -1,10 +1,20 @@
-﻿namespace MergeCommonElementsDistinct
+﻿using System;
+using System.Collections.Generic;
+
+namespace MergeCommonElementsDistinct
 {
     class Program
     {
         static void Main(string[] args)
         {
-            new MergeCommonElementsDistinct().Run();
+            var demos = new List<ICodeDemo>
+            {
+                new MergeCommonElementsDistinct(),
+                new CodeTestListOperations()
+            };
+
+            demos.ForEach(demo => 
+                Console.WriteLine(demo.Run()));
         }
     }
 }

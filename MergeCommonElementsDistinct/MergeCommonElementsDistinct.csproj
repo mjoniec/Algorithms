@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CodeTestListOperations.cs" />
+    <Compile Include="ICodeDemo.cs" />
     <Compile Include="MergeCommonElementsDistinct.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
