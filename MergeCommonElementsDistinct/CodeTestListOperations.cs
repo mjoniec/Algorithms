@@ -10,7 +10,16 @@ namespace MergeCommonElementsDistinct
     {
         public string Run()
         {
-            return ("CodeTestListOperations:");
+            return "CodeTestListOperations: " + Test();
+        }
+
+        private string Test()
+        {
+            var list = new List<int> { 5, 7, 3, 0, 4, 2, 4, 9};
+
+
+
+            return "";
         }
     }
 }
