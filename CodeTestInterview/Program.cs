@@ -7,7 +7,7 @@ Print($"{nameof(NaiveWordCount)}: {NaiveWordCount()}");
 Print($"{nameof(CountEveryWhiteSpaceCharacter)}: {CountEveryWhiteSpaceCharacter()}");
 Print($"{nameof(CountEveryWhiteSpaceCharacterOldStyle)}: {CountEveryWhiteSpaceCharacterOldStyle()}");
 Print($"{nameof(CountWhiteSpacesBlocks)}: {CountWhiteSpacesBlocks()}");
-Print($"{nameof(SizeOfLargestWhiteSpacesBlock)}: {SizeOfLargestWhiteSpacesBlock()}");
+Print($"{nameof(SizeOfLongestWhiteSpacesBlockSize)}: {SizeOfLongestWhiteSpacesBlockSize()}");
 Print($"{nameof(SplitIntoWordsOnAnySizedWhiteSpaceBlock)}: {SplitIntoWordsOnAnySizedWhiteSpaceBlock()}");
 Print($"{nameof(SplitIntoWordsOnAnySizedWhiteSpaceBlockWithNoEmptyWords)}: {SplitIntoWordsOnAnySizedWhiteSpaceBlockWithNoEmptyWords()}");
 
@@ -39,14 +39,22 @@ int CountEveryWhiteSpaceCharacterOldStyle()
 
 int CountWhiteSpacesBlocks()
 {
-    
+    var result = Regex.Matches(testSentence, @"\s{1,}");
 
-    return 0;
+    //The { m,n}
+    //expression requires the expression immediately prior to it match m to n times, inclusive.Only one limit is required.If the upper limit is missing, it means "m or more repetitions".
+    //result contains flag if success, index in string sentence and length
+
+    return result.Count;
 }
 
-int SizeOfLargestWhiteSpacesBlock()
+int SizeOfLongestWhiteSpacesBlockSize()
 {
-    return 0;
+    var result = Regex.Matches(testSentence, @"\s{1,}")
+        .Select(r => r.Length)
+        .Max();
+
+    return result;
 }
 
 string SplitIntoWordsOnAnySizedWhiteSpaceBlock()
@@ -55,9 +63,6 @@ string SplitIntoWordsOnAnySizedWhiteSpaceBlock()
         Split(testSentence, @"\s{1,}");
 
     return string.Join('|', result);
-
-    //The { m,n}
-    //expression requires the expression immediately prior to it match m to n times, inclusive.Only one limit is required.If the upper limit is missing, it means "m or more repetitions".
 }
 
 string SplitIntoWordsOnAnySizedWhiteSpaceBlockWithNoEmptyWords()
@@ -76,3 +81,8 @@ void Print(string text)
     Console.WriteLine(text);
 }
 
+//in operating on strings we may consider using:
+//Regex
+//Linq
+//StringBuilder
+//string methods
