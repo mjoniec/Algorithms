@@ -8,21 +8,50 @@ namespace CodeTestInterview
 {
     public class CodeTestOnNumbers
     {
-        private readonly List<int> _testNumbers = new() { 5, 7, 3, 0, 4, 2, 4, 9 };
+        private readonly List<int> _testNumbers = new() { 5, 9, 3, 0, 4, 2, 4, 9, 7 };
 
         public void Run()
         {
-            Print(Max());
+            Print(() => _testNumbers);
+            Print(MaxTwoElementsUnique);
         }
 
-        int Max()
+        //default order
+        //asc desc
+        //reverse
+        //remove duplicates (hashset ?)
+        //take - sublist from front
+        List<int> MaxTwoElementsUnique()
         {
-            return _testNumbers.Max();
+            var test = new List<int>(_testNumbers);
+
+            test.SortDescending();
+
+            return test
+                .Distinct()
+                .Take(2)
+                .ToList();
         }
 
-        void Print(int result)
+
+
+        static void Print(Func<List<int>> func)
         {
-            Console.WriteLine(result);
+            Console.WriteLine(string.Join(" ", func()));
+        }
+    }
+
+    public static class MyListExtensions
+    {
+        public static void Push<T>(this List<T> list, T item)
+        {
+            list.Insert(list.Count - 1, item);
+        }
+
+        public static void SortDescending<T>(this List<T> list)
+        {
+            list.Sort();
+            list.Reverse();
         }
     }
 }
