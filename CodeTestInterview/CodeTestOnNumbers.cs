@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,10 @@ namespace CodeTestInterview
         {
             Print(() => _testNumbers);
             Print(MaxTwoElementsUnique);
+            Console.WriteLine(
+                AreEveryElementLargerByOne(
+                    new List<int>{ 1, 2 }, 
+                    new List<int> { 2, 3 }));
         }
 
         //default order
@@ -33,11 +38,29 @@ namespace CodeTestInterview
                 .ToList();
         }
 
+        bool AreEveryElementLargerByOne(List<int> listA, List<int> listB)
+        {
+            var output = listA.SequenceEqual(listB, new TestComparer());
 
+            return output;
+        }
 
         static void Print(Func<List<int>> func)
         {
             Console.WriteLine(string.Join(" ", func()));
+        }
+    }
+
+    class TestComparer : IEqualityComparer<int>
+    {
+        public bool Equals(int x, int y)
+        {
+            return x + 1 == y;
+        }
+
+        public int GetHashCode(int obj)
+        {
+            throw new NotImplementedException();
         }
     }
 
